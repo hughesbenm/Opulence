@@ -16,36 +16,72 @@ const GemPool: React.FC<GemPoolProps> = () => {
 				flexGrow: 1
 			}}
 		>
-			<div
-				style={{"backgroundColor": "green"}}
-				className="gem"
-			>
-			</div>
-			<div
-				style={{"backgroundColor": "red"}}
-				className="gem"
-			>
-			</div>
-			<div
-				style={{"backgroundColor": "blue"}}
-				className="gem"
-			>
-			</div>
 			<Box
-				style={{"backgroundColor": "color-mix(in srgb, white, black 20%"}}
 				className="gem"
+				sx={{
+					borderColor: 'color-mix(in srgb, green, black 20%)',
+					bgcolor: "green"
+				}}
 			>
+				<h1 className={"gem_text"}>
+					5
+				</h1>
 			</Box>
-			<div
-				style={{"backgroundColor": "black"}}
+			<Box
 				className="gem"
+				sx={{
+					borderColor: 'color-mix(in srgb, red, black 20%)',
+					bgcolor: "red"
+				}}
 			>
-			</div>
-			<div
-				style={{"backgroundColor": "gold"}}
+				<h1 className={"gem_text"}>
+					5
+				</h1>
+			</Box>
+			<Box
 				className="gem"
+				sx={{
+					borderColor: 'color-mix(in srgb, blue, black 20%)',
+					bgcolor: "blue"
+				}}
 			>
-			</div>
+				<h1 className={"gem_text"}>
+					5
+				</h1>
+			</Box>
+			<Box
+				className="gem"
+				sx={{
+					borderColor: 'color-mix(in srgb, white, black 20%)',
+					bgcolor: "white"
+				}}
+			>
+				<h1 className={"gem_text"}>
+					5
+				</h1>
+			</Box>
+			<Box
+				className="gem"
+				sx={{
+					borderColor: 'black',
+					bgcolor: 'color-mix(in srgb, black, white 10%)'
+				}}
+			>
+				<h1 className={"gem_text"}>
+					5
+				</h1>
+			</Box>
+			<Box
+				className="gem"
+				sx={{
+					borderColor: 'color-mix(in srgb, #ffb219, black 20%)',
+					bgcolor: "#ffb219"
+				}}
+			>
+				<h1 className={"gem_text"}>
+					5
+				</h1>
+			</Box>
 		</Box>
 	)
 }
