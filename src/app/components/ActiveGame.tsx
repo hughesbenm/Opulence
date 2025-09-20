@@ -1,12 +1,13 @@
 import { Box } from "@mui/material";
+import BoardArea from "./layout/BoardArea";
 
 const ActiveGame = () => {
 	return (
 		<Box
+			className={"board"}
 			sx={{
-				flexGrow: 1,
-				margin: 2,
-				display: 'flex'
+				display: 'flex',
+				flexGrow: 1
 			}}
 		>
 			<Box
@@ -16,13 +17,7 @@ const ActiveGame = () => {
 					flexDirection: 'column'
 				}}
 			>
-				<Box
-					sx={{
-						flexGrow: 2,
-						display: 'flex',
-						flexDirection: 'column'
-					}}
-				>
+				<BoardArea name="Market" grow={2} column>
 					<Box
 						sx={{
 							bgcolor: 'white',
@@ -57,26 +52,14 @@ const ActiveGame = () => {
 							
 						</Box>
 					</Box>
-				</Box>
-				<Box
-					sx={{
-						bgcolor: 'yellow',
-						flexGrow: 1,
-						display: 'flex'
-					}}
-				>
+				</BoardArea>
+				<BoardArea name="Your Stuff">
 
-				</Box>
+				</BoardArea>
 			</Box>
-			<Box
-				sx={{
-					bgcolor: 'blue',
-					flexGrow: 1,
-					display: 'flex'
-				}}
-			>
+			<BoardArea name="Opponents">
 
-			</Box>	
+			</BoardArea>
 		</Box>
 	)
 }
