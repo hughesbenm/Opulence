@@ -5,7 +5,7 @@ import { Children, ReactElement } from "react";
 interface BoardAreaProps {
 	name: string;
 	grow?: number;
-	children?: ReactElement[];
+	children?: ReactElement[] | ReactElement;
 	column?: boolean;
 }
 
@@ -15,8 +15,24 @@ const BoardArea: React.FC<BoardAreaProps> = ({name, grow = 1, children, column =
 	)
 	
 	return (
-		<Box sx={{flexGrow: grow, flexDirection: (column ? 'column' : 'row')}} className="board_area">
-			<Typography>{name}</Typography>
+		<Box
+			sx={{
+				flexGrow: grow,
+				flexDirection: (column ? 'column' : 'row'),
+				position: 'relative'
+			}}
+			className="board_area"
+		>
+			<Typography
+				sx={{
+					position: 'absolute',
+					right: 0,
+					left: 0,
+					top: 2
+				}}
+			>
+				{name}
+			</Typography>
 			{mappedChildren}
 		</Box>
 	)
