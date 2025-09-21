@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import BoardArea from "./layout/BoardArea";
 import GemPool from "./GemPool";
+import CardPool from "./CardPool";
 
 const ActiveGame = () => {
 	return (
@@ -8,39 +9,31 @@ const ActiveGame = () => {
 			className={"board"}
 			sx={{
 				display: 'flex',
-				flexGrow: 1
+				flexGrow: 1,
+				// '& > *': { flexBasis: 0, minWidth: 0 }
+				flexBasis: 0,
+				minWidth: 0
 			}}
 		>
 			<Box
 				sx={{
 					flexGrow: 4,
 					display: 'flex',
-					flexDirection: 'column'
+					flexDirection: 'column',
+					flexBasis: 0,
+					// minWidth: 0
 				}}
 			>
 				<BoardArea name="Market" grow={2}>
-					<Box
-						sx={{
-							flexGrow: 1,
-							display: 'flex'
-						}}
-					>
-						<GemPool/>
-					</Box>
-					<Box
-						sx={{
-							bgcolor: 'green',
-							flexGrow: 6,
-							display: 'flex'
-						}}
-					>
-
-					</Box>
+					<GemPool/>
+					<CardPool/>
 					<Box
 						sx={{
 							bgcolor: 'orange',
 							flexGrow: 2,
-							display: 'flex'
+							display: 'flex',
+							mindWidth: 0,
+							flexBasis: 0
 						}}
 					>
 						

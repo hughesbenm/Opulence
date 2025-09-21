@@ -13,7 +13,9 @@ const GemPool: React.FC<GemPoolProps> = () => {
 				justifyContent: 'space-evenly',
 				alignItems: 'center',
 				flexDirection: 'column',
-				flexGrow: 1
+				flexGrow: 1,
+				mindWidth: 0,
+				flexBasis: 0
 			}}
 		>
 			<Box
