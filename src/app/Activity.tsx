@@ -35,7 +35,8 @@ export const Activity = () => {
 			sx={{
 				// bgcolor: 'red',
 				height: '100%',
-				width: '100%'
+				width: '100%',
+				flexBasis: 0
 			}}
 		>
 			<Box
@@ -45,7 +46,7 @@ export const Activity = () => {
 			>
 				<img
 					src="/OpulenceLogo.png"
-					width={250}
+					width={175}
 				/>
 			</Box>
 			<ActiveGame/>

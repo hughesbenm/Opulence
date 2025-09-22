@@ -1,6 +1,6 @@
 .gem {
-	width: 7vh;
-	height: 7vh;
+	width: 5vh;
+	height: 5vh;
 	border-radius: 50%;
 	border-width: 4px;
 	border-style: solid;
@@ -14,4 +14,10 @@
 	font-size: x-large;
 	-webkit-text-fill-color: white;
 	-webkit-text-stroke: 0.8px black;
+}
+
+.noble {
+	width: 50px;
+	height: 75px;
+	background-color: green;
 }

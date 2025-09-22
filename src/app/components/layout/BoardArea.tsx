@@ -19,7 +19,8 @@ const BoardArea: React.FC<BoardAreaProps> = ({name, grow = 1, children, column =
 			sx={{
 				flexGrow: grow,
 				flexDirection: (column ? 'column' : 'row'),
-				position: 'relative'
+				position: 'relative',
+				flexBasis: 0
 			}}
 			className="board_area"
 		>
