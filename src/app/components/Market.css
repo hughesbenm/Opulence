@@ -17,7 +17,10 @@
 }
 
 .noble {
-	width: 50px;
+	width: 75px;
 	height: 75px;
-	background-color: green;
+	background-color: lightblue;
+	border-style: solid;
+	border-radius: 10px;
+	border-color: black;
 }

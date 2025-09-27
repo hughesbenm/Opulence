@@ -1,5 +1,6 @@
 import { Box } from "@mui/material"
 import "./Market.css"
+import Noble from "./pieces/Noble"
 
 interface NoblePoolProps {
 
@@ -14,37 +15,15 @@ const NoblePool: React.FC<NoblePoolProps> = ({}) => {
 				flexBasis: 0,
 				flexDirection: 'column',
 				justifyContent: 'space-evenly',
-				// gap: 2,
 				alignItems: 'center',
 				minHeight: 0,
-				bgcolor: 'white',
 			}}
 		>
-			<Box
-				className='noble'
-			>
-				
-			</Box>
-			<Box
-				className='noble'
-			>
-				
-			</Box>
-			<Box
-				className='noble'
-			>
-				
-			</Box>
-			<Box
-				className='noble'
-			>
-				
-			</Box>
-			<Box
-				className='noble'
-			>
-				
-			</Box>
+			<Noble />
+			<Noble />
+			<Noble />
+			<Noble />
+			<Noble />
 		</Box>
 	)
 }

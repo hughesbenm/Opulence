@@ -3,6 +3,7 @@ import BoardArea from "./layout/BoardArea";
 import GemPool from "./GemPool";
 import CardPool from "./CardPool";
 import NoblePool from "./NoblePool";
+import Stash from "./Stash";
 
 const ActiveGame = () => {
 	return (
@@ -32,8 +33,8 @@ const ActiveGame = () => {
 					<CardPool/>
 					<NoblePool/>
 				</BoardArea>
-				<BoardArea name="Your Stuff">
-
+				<BoardArea name="Stash">
+					<Stash />
 				</BoardArea>
 			</Box>
 			<BoardArea name="Opponents">
