@@ -1,9 +1,8 @@
 import { Box } from "@mui/material";
-import BoardArea from "./layout/BoardArea";
-import GemPool from "./GemPool";
-import CardPool from "./CardPool";
-import NoblePool from "./NoblePool";
-import Stash from "./Stash";
+import Stash from "./areas/stash/Stash";
+import "./pieces/Pieces.css"
+import Market from "./areas/market/Market";
+import Opponents from "./areas/opponents/Opponents";
 
 const ActiveGame = () => {
 	return (
@@ -28,18 +27,10 @@ const ActiveGame = () => {
 					minHeight: 0
 				}}
 			>
-				<BoardArea name="Market" grow={2}>
-					<GemPool/>
-					<CardPool/>
-					<NoblePool/>
-				</BoardArea>
-				<BoardArea name="Stash">
-					<Stash />
-				</BoardArea>
+				<Market/>
+				<Stash />
 			</Box>
-			<BoardArea name="Opponents">
-
-			</BoardArea>
+			<Opponents />
 		</Box>
 	)
 }

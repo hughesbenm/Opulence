@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
-import { CardQuality } from "../types";
-import CardBase from "./pieces/CardBase";
+import { CardQuality } from "../../../types";
+import MarketCard from "../../pieces/MarketCard";
 
 interface CardPoolProps {
 
@@ -31,11 +31,11 @@ const CardPool: React.FC<CardPoolProps> = () => {
 							alignSelf: 'stretch'
 						}}
 					>
-						<CardBase color={quality}/>
-						<CardBase color={quality}/>
-						<CardBase color={quality}/>
-						<CardBase color={quality}/>
-						<CardBase color={quality}/>
+						<MarketCard color={quality}/>
+						<MarketCard color={quality}/>
+						<MarketCard color={quality}/>
+						<MarketCard color={quality}/>
+						<MarketCard color={quality}/>
 					</Box>
 				)
 			})}

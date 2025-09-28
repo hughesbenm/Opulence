@@ -1,17 +1,19 @@
 import { Box } from "@mui/material";
 import { CARD_HEIGHT, CARD_WIDTH, CardQuality, Color } from "../../types";
-import "../Market.css"
 
 interface CardBaseProps {
 	color: Color | CardQuality;
+	height?: string;
+	width?: string;
 }
 
-const CardBase: React.FC<CardBaseProps> = ({color}) => {
+const CardBase: React.FC<CardBaseProps> = ({color, width = CARD_WIDTH, height = CARD_HEIGHT}) => {
 	return (
 		<Box
+			className={'card_base'}
 			sx={{
-				width: CARD_WIDTH,
-				height: CARD_HEIGHT,
+				width: width,
+				height: height,
 				bgcolor: color,
 				padding: 0,
 				margin: 0

@@ -1,26 +1,17 @@
 import { Box } from "@mui/material";
-import { Color } from "../types";
-import Gem from "./pieces/Gem";
+import { Color } from "../../../types";
+import Gem from "../../pieces/Gem";
+import StashCard from "../../pieces/StashCard";
+import BoardArea from "../../layout/BoardArea";
 
 interface StashProps {
 
 }
 
-const Stash: React.FC<StashProps> = () => {
-	const CARD_HEIGHT = "12vh";
-	const CARD_WIDTH = "7vw";
+const Stash: React.FC<StashProps> = ({}) => {
 	
 	return (
-		<Box
-			sx={{
-				display: 'flex',
-				alignItems: 'center',
-				flexDirection: 'column',
-				flexGrow: 6,
-				flexBasis: 0,
-				minWidth: 0
-			}}
-		>
+		<BoardArea name={"Stash"}>
 			<Box
 				sx={{
 					display: 'flex',
@@ -40,17 +31,7 @@ const Stash: React.FC<StashProps> = () => {
 								alignItems: 'center',
 							}}
 						>
-							<Box
-								sx={{
-									width: CARD_WIDTH,
-									height: CARD_HEIGHT,
-									bgcolor: color,
-									padding: 0,
-									margin: 0
-								}}
-							>
-
-							</Box>
+							<StashCard color={color}/>
 							<Gem
 								color={color}
 								amount={5}
@@ -59,7 +40,7 @@ const Stash: React.FC<StashProps> = () => {
 					)
 				})}				
 			</Box>
-		</Box>
+		</BoardArea>
 	)
 }
 

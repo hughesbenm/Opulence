@@ -1,15 +1,15 @@
 import CardBase from "./CardBase";
 import { CardQuality, Color } from "~/app/types";
 
-interface MarketCardProps {
+interface StashCardProps {
 	color: Color | CardQuality;
 }
 
-const MarketCard: React.FC<MarketCardProps> = ({color}) => {
+const StashCard: React.FC<StashCardProps> = ({color}) => {
 	return (
 		<CardBase color={color}>
 		</CardBase>
 	)
 }
 
-export default MarketCard;
+export default StashCard;

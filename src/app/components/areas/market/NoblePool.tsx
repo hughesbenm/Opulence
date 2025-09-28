@@ -1,6 +1,5 @@
 import { Box } from "@mui/material"
-import "./Market.css"
-import Noble from "./pieces/Noble"
+import Noble from "../../pieces/Noble"
 
 interface NoblePoolProps {
 

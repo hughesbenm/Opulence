@@ -1,5 +1,4 @@
 import { Box } from "@mui/material"
-import "../Market.css"
 
 interface NobleProps {
 
