@@ -19,7 +19,7 @@ const Opponents: React.FC<OpponentsProps> = ({}) => {
 					paddingTop: '25px',
 					flexGrow: 1,
 					display: 'flex',
-					gap: 25
+					gap: '22vh'
 				}}
 			>
 				<Box
@@ -27,7 +27,7 @@ const Opponents: React.FC<OpponentsProps> = ({}) => {
 						display: 'flex',
 						justifyContent: 'center',
 					}}
-					>
+				>
 					{Object.values(Color).map((color) => {
 						return (
 							<Stack
@@ -44,7 +44,6 @@ const Opponents: React.FC<OpponentsProps> = ({}) => {
 							</Stack>
 						)
 					})}
-					
 				</Box>
 				<Box
 					sx={{

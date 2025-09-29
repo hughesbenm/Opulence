@@ -11,10 +11,13 @@ const BuyingPower: React.FC<BuyingPowerProps> = ({amount, color, height = BUYING
 	return (
 		<Box
 			sx={{
-				margin: 1,
 				height: height,
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
 				width: height,
-				bgcolor: color
+				bgcolor: color,
+				fontSize: 'xx-small',
 			}}
 		>
 			<h1 className={"text"}>
