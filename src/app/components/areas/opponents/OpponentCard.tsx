@@ -1,5 +1,5 @@
 import CardBase from "../../pieces/CardBase";
-import { CardQuality, Color, OPPONENT_CARD_HEIGHT, OPPONENT_CARD_WIDTH } from '../../../types';
+import { CardQuality, Color, MINI_CARD_HEIGHT, MINI_CARD_WIDTH } from '../../../types';
 
 interface OpponentCardProps {
 	color: Color | CardQuality;
@@ -9,8 +9,8 @@ const OpponentCard: React.FC<OpponentCardProps> = ({color}) => {
 	return (
 		<CardBase
 			color={color}
-			width={OPPONENT_CARD_WIDTH}
-			height={OPPONENT_CARD_HEIGHT}
+			width={MINI_CARD_WIDTH}
+			height={MINI_CARD_HEIGHT}
 		/>
 	)
 }

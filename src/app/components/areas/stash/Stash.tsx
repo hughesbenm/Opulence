@@ -1,8 +1,9 @@
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import { Color } from "../../../types";
 import Gem from "../../pieces/Gem";
 import StashCard from "../../pieces/StashCard";
 import BoardArea from "../../layout/BoardArea";
+import BuyingPower from "../../pieces/BuyingPower";
 
 interface StashProps {
 
@@ -25,18 +26,28 @@ const Stash: React.FC<StashProps> = ({}) => {
 			>
 				{Object.values(Color).map((color: Color) => {
 					return (
-						<Box
+						<Stack
 							sx={{
 								display: 'flex',
+								justifyContent: 'center',
 								alignItems: 'center',
+								gap: 3
 							}}
 						>
-							<StashCard color={color}/>
-							<Gem
-								color={color}
-								amount={5}
-							/>
-						</Box>
+							<BuyingPower amount={0} color={color} />
+							<Box
+								sx={{
+									display: 'flex',
+									alignItems: 'center',
+								}}
+							>
+								<StashCard color={color}/>
+								<Gem
+									color={color}
+									amount={5}
+								/>
+							</Box>
+						</Stack>
 					)
 				})}				
 			</Box>

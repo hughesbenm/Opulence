@@ -31,9 +31,9 @@ const CardPool: React.FC<CardPoolProps> = () => {
 							alignSelf: 'stretch'
 						}}
 					>
-						<MarketCard color={quality}/>
-						<MarketCard color={quality}/>
-						<MarketCard color={quality}/>
+						<MarketCard white={1} color={quality}/>
+						<MarketCard blue={2} green={3} color={quality}/>
+						<MarketCard red={1} white={3} black={3} color={quality}/>
 						<MarketCard color={quality}/>
 						<MarketCard color={quality}/>
 					</Box>

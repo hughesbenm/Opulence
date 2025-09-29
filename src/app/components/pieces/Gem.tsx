@@ -1,7 +1,7 @@
 import { Box } from "@mui/material"
 import { Color, GEM_FONT_SIZE, GEM_HEIGHT, GOLD_TYPE } from "../../types";
 
-interface GemProps {
+export interface GemProps {
 	color: Color | GOLD_TYPE;
 	amount: number;
 	noBorder?: boolean;

@@ -18,12 +18,12 @@ export enum CardQuality {
 
 export const CARD_HEIGHT = "12vh";
 export const CARD_WIDTH = "7vw";
-export const OPPONENT_CARD_WIDTH = '2vw';
-export const OPPONENT_CARD_HEIGHT = '3.25vh';
+export const MINI_CARD_WIDTH = '2vw';
+export const MINI_CARD_HEIGHT = '3.25vh';
 
 export const GEM_HEIGHT = '5vh';
 export const GEM_FONT_SIZE = 'small';
-export const OPPONENT_GEM_HEIGHT = '2vh';
-export const OPPONENT_GEM_FONT_SIZE = 'xx-small';
+export const MINI_GEM_HEIGHT = '2vh';
+export const MINI_GEM_FONT_SIZE = 'xx-small';
 
 export const BUYING_POWER_HEIGHT = GEM_HEIGHT

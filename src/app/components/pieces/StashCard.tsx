@@ -1,14 +1,15 @@
+import { CardQuality, Color } from "../../types";
 import CardBase from "./CardBase";
-import { CardQuality, Color } from "~/app/types";
+import Gem from "./Gem";
 
 interface StashCardProps {
 	color: Color | CardQuality;
 }
 
 const StashCard: React.FC<StashCardProps> = ({color}) => {
+	
 	return (
-		<CardBase color={color}>
-		</CardBase>
+		<CardBase color={color} />
 	)
 }
 
