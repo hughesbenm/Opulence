@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import Stash from "./areas/stash/Stash";
 import "./pieces/Pieces.css"
 import Market from "./areas/market/Market";
-import Opponents from "./areas/opponents/Opponents";
+import Opponents from "./areas/opponents/OpponentsArea";
 
 const ActiveGame = () => {
 	return (
