@@ -1,14 +1,14 @@
 import { Box } from "@mui/material";
-import { CARD_HEIGHT, CARD_WIDTH, CardQuality, Color } from "../../types";
-import { ReactElement } from "react";
-import { GemProps } from "./Gem"
+import { CARD_HEIGHT, CARD_WIDTH, CardQuality, Color, MINI_GEM_FONT_SIZE } from "../../types";
 
 interface CardBaseProps {
 	color: Color | CardQuality;
 	height?: string;
 	width?: string;
-	children?: ReactElement<GemProps> | ReactElement<GemProps>[];
+	children?: any;
 	className?: string;
+	fontSize?: string;
+	invisible?: boolean;
 }
 
 const CardBase: React.FC<CardBaseProps> = ({
@@ -16,7 +16,9 @@ const CardBase: React.FC<CardBaseProps> = ({
 	width = CARD_WIDTH,
 	height = CARD_HEIGHT,
 	children,
-	className = ""
+	className = "",
+	fontSize = MINI_GEM_FONT_SIZE,
+	invisible = false
 }) => {
 	return (
 		<Box
@@ -25,8 +27,8 @@ const CardBase: React.FC<CardBaseProps> = ({
 				width: width,
 				height: height,
 				bgcolor: color,
-				padding: 0,
-				margin: 0
+				fontSize: fontSize,
+				visibility: invisible ? 'hidden' : 'visible'
 			}}
 		>
 			{children}

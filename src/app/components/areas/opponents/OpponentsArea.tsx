@@ -1,10 +1,6 @@
-import { Box, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import BoardArea from "../../layout/BoardArea"
 import './Opponents.css'
-import OpponentCard from "./OpponentCard";
-import { Color, MINI_GEM_FONT_SIZE, MINI_GEM_HEIGHT } from "../../../types";
-import Gem from "../../pieces/Gem";
-import BuyingPower from "../../pieces/BuyingPower";
 import Opponent from "./Opponent";
 
 interface OpponentsAreaProps {

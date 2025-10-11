@@ -1,6 +1,6 @@
 .gem {
 	border-radius: 50%;
-	border-width: 3px;
+	border-width: 0px;
 	border-style: solid;
 	display: flex;
 	justify-content: center;
@@ -11,6 +11,7 @@
 	color: black;
 	-webkit-text-fill-color: white;
 	-webkit-text-stroke: 0.8px black;
+	/* background-color: pink; */
 }
 
 .noble {
@@ -26,4 +27,16 @@
 	border-radius: 4px;
 	border-style: solid;
 	border-color: silver;
+	display: flex;
+}
+
+.opponent_card {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.market_card {
+	justify-content: space-between;
+	align-items: flex-start;
 }
