@@ -17,9 +17,9 @@ export enum CardQuality {
 }
 
 export const CARD_HEIGHT = "12vh";
-export const CARD_WIDTH = "7vw";
-export const MINI_CARD_WIDTH = '2vw';
+export const CARD_WIDTH = `calc(${CARD_HEIGHT} / 4 * 3)`;
 export const MINI_CARD_HEIGHT = '3.25vh';
+export const MINI_CARD_WIDTH = `calc(${MINI_CARD_HEIGHT} / 4 * 3)`;
 
 export const GEM_HEIGHT = '5vh';
 export const GEM_FONT_SIZE = 'small';

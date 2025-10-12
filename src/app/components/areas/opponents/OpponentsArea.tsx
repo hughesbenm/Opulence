@@ -16,7 +16,7 @@ const OpponentsArea: React.FC<OpponentsAreaProps> = ({}) => {
 					paddingTop: '25px',
 					flexGrow: 1,
 					display: 'flex',
-					gap: '22vh'
+					justifyContent: 'space-between'
 				}}
 			>
 				<Opponent />
