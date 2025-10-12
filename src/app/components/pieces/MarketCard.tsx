@@ -32,7 +32,7 @@ const MarketCard: React.FC<MarketCardProps> = ({
 	
 	return (
 		<CardBase color={color} className={"market_card"}>
-			<Stack bgcolor={'red'}>
+			<Stack>
 				{Object.values(Color).filter((color) => {
 					return colorMap[color] !== undefined && colorMap[color] > 0
 				}).map((color) => {

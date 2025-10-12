@@ -33,7 +33,6 @@ export const Activity = () => {
 		<Stack
 			display={'flex'}
 			sx={{
-				// bgcolor: 'red',
 				height: '100%',
 				width: '100%',
 				flexBasis: 0
@@ -41,7 +40,6 @@ export const Activity = () => {
 		>
 			<Box
 				display="flex"
-				// bgcolor={'green'}
 				justifyContent={'flex-start'}
 			>
 				<img

@@ -1,10 +1,11 @@
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { CardQuality, Color, GOLD } from "../../../types";
 import Gem from "../../pieces/Gem";
 import StashCard from "../../pieces/StashCard";
 import BoardArea from "../../layout/BoardArea";
 import BuyingPower from "../../pieces/BuyingPower";
 import MarketCard from "../../pieces/MarketCard";
+import Noble from "../../pieces/Noble";
 
 interface StashProps {
 
@@ -54,17 +55,38 @@ const Stash: React.FC<StashProps> = ({}) => {
 				>
 					<Gem color={GOLD} amount={0} />
 				</Box>
-				<Box
+				<Stack
 					sx={{
 						display: 'flex',
-						alignItems: 'center',
-						height: '100%'
+						height: '100%',
+						justifyContent: 'space-between',
+						alignItems: 'center'
 					}}
 				>
-					<MarketCard color={Color.BLUE} white={1}/>
-					<MarketCard color={Color.BLACK} />
-					<MarketCard color={Color.RED} />
-				</Box>
+					<Typography variant={'h4'}>Current points: {5}</Typography>
+					<Box
+						sx={{
+							display: 'flex',
+							alignItems: 'center',
+							height: '100%'
+						}}
+						>
+						<MarketCard color={Color.BLUE} white={1}/>
+						<MarketCard color={Color.BLACK} />
+						<MarketCard color={Color.RED} />
+					</Box>
+					<Box
+						sx={{
+							display: 'flex'
+						}}
+					>
+						<Noble/>
+						<Noble/>
+						<Noble/>
+						<Noble/>
+						<Noble/>
+					</Box>
+				</Stack>
 			</Box>
 		</BoardArea>
 	)
