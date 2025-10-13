@@ -18,7 +18,10 @@ import { SyncContextProvider } from '@robojs/sync'
  */
 export default function App() {
 	return (
-		<DiscordContextProvider>
+		<DiscordContextProvider
+			authenticate
+			scope={['identify', 'guilds']}
+		>
 			<SyncContextProvider>
 				<Activity />
 			</SyncContextProvider>

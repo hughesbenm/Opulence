@@ -29,6 +29,7 @@ const Stash: React.FC<StashProps> = ({}) => {
 				{Object.values(Color).map((color: Color) => {
 					return (
 						<Stack
+							key={color}
 							sx={{
 								display: 'flex',
 								alignItems: 'center',

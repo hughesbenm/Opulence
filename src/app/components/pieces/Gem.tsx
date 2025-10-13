@@ -6,13 +6,15 @@ export interface GemProps {
 	amount: number;
 	noBorder?: boolean;
 	height?: string;
-	fontSize? : string;
+	fontSize?: string;
+	onClick?: () => void;
 }
 
-const Gem: React.FC<GemProps> =({color, amount, noBorder = false, height = GEM_HEIGHT, fontSize = GEM_FONT_SIZE}) => {
+const Gem: React.FC<GemProps> = ({onClick, color, amount, noBorder = false, height = GEM_HEIGHT, fontSize = GEM_FONT_SIZE}) => {
 	return (
 		<Box
 			className="gem"
+			onClick={onClick}
 			sx={{
 				borderColor: `color-mix(in srgb, ${color}, ${color === Color.BLACK ? 'white 25%' : 'black 20%'})`,
 				bgcolor: color,

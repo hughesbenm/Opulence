@@ -21,6 +21,7 @@ const CardPool: React.FC<CardPoolProps> = () => {
 			{Object.values(CardQuality).map((quality) => {
 				return (
 					<Box
+						key={quality}
 						sx={{
 							display: 'flex',
 							flexGrow: 1,

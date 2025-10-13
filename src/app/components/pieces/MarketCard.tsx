@@ -38,6 +38,7 @@ const MarketCard: React.FC<MarketCardProps> = ({
 				}).map((color) => {
 					return (
 						<Gem
+							key={color}
 							color={color}
 							amount={colorMap[color] ?? 0}
 							height={MINI_GEM_HEIGHT}

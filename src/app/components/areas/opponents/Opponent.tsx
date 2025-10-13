@@ -26,6 +26,7 @@ const Opponent: React.FC<OpponentProps> = ({}) => {
 				{Object.values(Color).map((color) => {
 					return (
 						<Stack
+							key={color}
 							sx={{
 								display: 'flex',
 								justifyContent: 'center',
