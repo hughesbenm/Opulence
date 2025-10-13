@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDiscordSdk } from '../hooks/useDiscordSdk'
 import { Box, Stack } from '@mui/material'
+import ActiveGame from './components/ActiveGame'
 
 /**
  * This is your Discord Activity's main component. Customize it as you like!
@@ -32,29 +33,21 @@ export const Activity = () => {
 		<Stack
 			display={'flex'}
 			sx={{
-				// bgcolor: 'red',
 				height: '100%',
-				width: '100%'
+				width: '100%',
+				flexBasis: 0
 			}}
 		>
 			<Box
 				display="flex"
-				// bgcolor={'green'}
 				justifyContent={'flex-start'}
 			>
 				<img
 					src="/OpulenceLogo.png"
-					width={250}
+					width={175}
 				/>
 			</Box>
-			<Box
-				sx={{
-					height: '100%',
-					// bgcolor: 'red'
-				}}
-			>
-				It's totally splendor!
-			</Box>
+			<ActiveGame/>
 
 		</Stack>
 	)
