@@ -1,0 +1,818 @@
+{
+	"one": [
+		{
+			"color": "white",
+			"points": 0,
+			"white": 0,
+			"blue": 2,
+			"black": 2,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "white",
+			"points": 0,
+			"white": 3,
+			"blue": 1,
+			"black": 1,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "white",
+			"points": 0,
+			"white": 0,
+			"blue": 1,
+			"black": 1,
+			"red": 1,
+			"green": 2
+		},
+		{
+			"color": "white",
+			"points": 0,
+			"white": 0,
+			"blue": 1,
+			"black": 1,
+			"red": 1,
+			"green": 1
+		},
+		{
+			"color": "white",
+			"points": 0,
+			"white": 0,
+			"blue": 0,
+			"black": 1,
+			"red": 2,
+			"green": 0
+		},
+		{
+			"color": "white",
+			"points": 1,
+			"white": 0,
+			"blue": 3,
+			"black": 0,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "white",
+			"points": 1,
+			"white": 0,
+			"blue": 0,
+			"black": 0,
+			"red": 0,
+			"green": 4
+		},
+		{
+			"color": "white",
+			"points": 0,
+			"white": 0,
+			"blue": 2,
+			"black": 1,
+			"red": 0,
+			"green": 2
+		},
+		{
+			"color": "blue",
+			"points": 0,
+			"white": 1,
+			"blue": 0,
+			"black": 0,
+			"red": 2,
+			"green": 2
+		},
+		{
+			"color": "blue",
+			"points": 0,
+			"white": 0,
+			"blue": 1,
+			"black": 0,
+			"red": 1,
+			"green": 3
+		},
+		{
+			"color": "blue",
+			"points": 0,
+			"white": 1,
+			"blue": 0,
+			"black": 1,
+			"red": 1,
+			"green": 1
+		},
+		{
+			"color": "blue",
+			"points": 0,
+			"white": 1,
+			"blue": 0,
+			"black": 1,
+			"red": 2,
+			"green": 1
+		},
+		{
+			"color": "blue",
+			"points": 1,
+			"white": 0,
+			"blue": 0,
+			"black": 0,
+			"red": 4,
+			"green": 0
+		},
+		{
+			"color": "blue",
+			"points": 0,
+			"white": 0,
+			"blue": 0,
+			"black": 3,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "blue",
+			"points": 0,
+			"white": 1,
+			"blue": 0,
+			"black": 2,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "blue",
+			"points": 0,
+			"white": 0,
+			"blue": 0,
+			"black": 2,
+			"red": 0,
+			"green": 2
+		},
+		{
+			"color": "black",
+			"points": 0,
+			"white": 0,
+			"blue": 0,
+			"black": 0,
+			"red": 1,
+			"green": 2
+		},
+		{
+			"color": "black",
+			"points": 0,
+			"white": 2,
+			"blue": 2,
+			"black": 0,
+			"red": 1,
+			"green": 0
+		},
+		{
+			"color": "black",
+			"points": 0,
+			"white": 1,
+			"blue": 2,
+			"black": 0,
+			"red": 1,
+			"green": 1
+		},
+		{
+			"color": "black",
+			"points": 0,
+			"white": 0,
+			"blue": 0,
+			"black": 1,
+			"red": 3,
+			"green": 1
+		},
+		{
+			"color": "black",
+			"points": 1,
+			"white": 0,
+			"blue": 4,
+			"black": 0,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "black",
+			"points": 0,
+			"white": 0,
+			"blue": 0,
+			"black": 0,
+			"red": 0,
+			"green": 3
+		},
+		{
+			"color": "black",
+			"points": 0,
+			"white": 1,
+			"blue": 1,
+			"black": 0,
+			"red": 1,
+			"green": 1
+		},
+		{
+			"color": "black",
+			"points": 0,
+			"white": 2,
+			"blue": 0,
+			"black": 0,
+			"red": 0,
+			"green": 2
+		},
+		{
+			"color": "red",
+			"points": 0,
+			"white": 2,
+			"blue": 0,
+			"black": 0,
+			"red": 2,
+			"green": 0
+		},
+		{
+			"color": "red",
+			"points": 0,
+			"white": 2,
+			"blue": 0,
+			"black": 2,
+			"red": 0,
+			"green": 1
+		},
+		{
+			"color": "red",
+			"points": 0,
+			"white": 3,
+			"blue": 0,
+			"black": 0,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "red",
+			"points": 0,
+			"white": 2,
+			"blue": 1,
+			"black": 1,
+			"red": 0,
+			"green": 1
+		},
+		{
+			"color": "red",
+			"points": 0,
+			"white": 0,
+			"blue": 2,
+			"black": 0,
+			"red": 0,
+			"green": 1
+		},
+		{
+			"color": "red",
+			"points": 0,
+			"white": 1,
+			"blue": 0,
+			"black": 3,
+			"red": 1,
+			"green": 0
+		},
+		{
+			"color": "red",
+			"points": 0,
+			"white": 1,
+			"blue": 1,
+			"black": 1,
+			"red": 0,
+			"green": 1
+		},
+		{
+			"color": "red",
+			"points": 1,
+			"white": 4,
+			"blue": 0,
+			"black": 0,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "green",
+			"points": 0,
+			"white": 0,
+			"blue": 0,
+			"black": 0,
+			"red": 3,
+			"green": 0
+		},
+		{
+			"color": "green",
+			"points": 0,
+			"white": 2,
+			"blue": 1,
+			"black": 0,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "green",
+			"points": 0,
+			"white": 1,
+			"blue": 1,
+			"black": 2,
+			"red": 1,
+			"green": 0
+		},
+		{
+			"color": "green",
+			"points": 0,
+			"white": 1,
+			"blue": 3,
+			"black": 0,
+			"red": 0,
+			"green": 1
+		},
+		{
+			"color": "green",
+			"points": 1,
+			"white": 0,
+			"blue": 0,
+			"black": 4,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "green",
+			"points": 0,
+			"white": 0,
+			"blue": 1,
+			"black": 2,
+			"red": 2,
+			"green": 0
+		},
+		{
+			"color": "green",
+			"points": 0,
+			"white": 1,
+			"blue": 1,
+			"black": 1,
+			"red": 1,
+			"green": 0
+		},
+		{
+			"color": "green",
+			"points": 0,
+			"white": 0,
+			"blue": 2,
+			"black": 0,
+			"red": 2,
+			"green": 0
+		}
+	],
+	"two": [
+		{
+			"color": "white",
+			"points": 2,
+			"white": 0,
+			"blue": 0,
+			"black": 0,
+			"red": 5,
+			"green": 0
+		},
+		{
+			"color": "white",
+			"points": 1,
+			"white": 2,
+			"blue": 3,
+			"black": 0,
+			"red": 3,
+			"green": 0
+		},
+		{
+			"color": "white",
+			"points": 3,
+			"white": 6,
+			"blue": 0,
+			"black": 0,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "white",
+			"points": 1,
+			"white": 0,
+			"blue": 0,
+			"black": 2,
+			"red": 2,
+			"green": 3
+		},
+		{
+			"color": "white",
+			"points": 2,
+			"white": 0,
+			"blue": 0,
+			"black": 2,
+			"red": 4,
+			"green": 1
+		},
+		{
+			"color": "white",
+			"points": 2,
+			"white": 0,
+			"blue": 0,
+			"black": 3,
+			"red": 5,
+			"green": 0
+		},
+		{
+			"color": "blue",
+			"points": 1,
+			"white": 0,
+			"blue": 2,
+			"black": 3,
+			"red": 0,
+			"green": 3
+		},
+		{
+			"color": "blue",
+			"points": 2,
+			"white": 5,
+			"blue": 3,
+			"black": 0,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "blue",
+			"points": 2,
+			"white": 2,
+			"blue": 0,
+			"black": 4,
+			"red": 1,
+			"green": 0
+		},
+		{
+			"color": "blue",
+			"points": 2,
+			"white": 0,
+			"blue": 5,
+			"black": 0,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "blue",
+			"points": 3,
+			"white": 0,
+			"blue": 6,
+			"black": 0,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "blue",
+			"points": 1,
+			"white": 0,
+			"blue": 2,
+			"black": 0,
+			"red": 3,
+			"green": 2
+		},
+		{
+			"color": "black",
+			"points": 2,
+			"white": 0,
+			"blue": 0,
+			"black": 0,
+			"red": 3,
+			"green": 5
+		},
+		{
+			"color": "black",
+			"points": 1,
+			"white": 3,
+			"blue": 2,
+			"black": 0,
+			"red": 0,
+			"green": 2
+		},
+		{
+			"color": "black",
+			"points": 2,
+			"white": 0,
+			"blue": 1,
+			"black": 0,
+			"red": 2,
+			"green": 4
+		},
+		{
+			"color": "black",
+			"points": 1,
+			"white": 3,
+			"blue": 0,
+			"black": 2,
+			"red": 0,
+			"green": 3
+		},
+		{
+			"color": "black",
+			"points": 3,
+			"white": 0,
+			"blue": 0,
+			"black": 6,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "black",
+			"points": 2,
+			"white": 5,
+			"blue": 0,
+			"black": 0,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "red",
+			"points": 2,
+			"white": 0,
+			"blue": 0,
+			"black": 5,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "red",
+			"points": 1,
+			"white": 0,
+			"blue": 3,
+			"black": 3,
+			"red": 2,
+			"green": 0
+		},
+		{
+			"color": "red",
+			"points": 1,
+			"white": 2,
+			"blue": 0,
+			"black": 3,
+			"red": 2,
+			"green": 0
+		},
+		{
+			"color": "red",
+			"points": 3,
+			"white": 0,
+			"blue": 0,
+			"black": 0,
+			"red": 6,
+			"green": 0
+		},
+		{
+			"color": "red",
+			"points": 2,
+			"white": 3,
+			"blue": 0,
+			"black": 5,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "red",
+			"points": 2,
+			"white": 1,
+			"blue": 4,
+			"black": 0,
+			"red": 0,
+			"green": 2
+		},
+		{
+			"color": "green",
+			"points": 1,
+			"white": 3,
+			"blue": 0,
+			"black": 0,
+			"red": 3,
+			"green": 2
+		},
+		{
+			"color": "green",
+			"points": 2,
+			"white": 0,
+			"blue": 0,
+			"black": 0,
+			"red": 0,
+			"green": 5
+		},
+		{
+			"color": "green",
+			"points": 2,
+			"white": 0,
+			"blue": 5,
+			"black": 0,
+			"red": 0,
+			"green": 3
+		},
+		{
+			"color": "green",
+			"points": 2,
+			"white": 4,
+			"blue": 2,
+			"black": 1,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "green",
+			"points": 1,
+			"white": 2,
+			"blue": 3,
+			"black": 2,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "green",
+			"points": 3,
+			"white": 0,
+			"blue": 0,
+			"black": 0,
+			"red": 0,
+			"green": 6
+		}
+	],
+	"three": [
+		{
+			"color": "white",
+			"points": 3,
+			"white": 0,
+			"blue": 3,
+			"black": 3,
+			"red": 5,
+			"green": 3
+		},
+		{
+			"color": "white",
+			"points": 4,
+			"white": 0,
+			"blue": 0,
+			"black": 7,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "white",
+			"points": 5,
+			"white": 3,
+			"blue": 0,
+			"black": 7,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "white",
+			"points": 4,
+			"white": 3,
+			"blue": 0,
+			"black": 6,
+			"red": 3,
+			"green": 0
+		},
+		{
+			"color": "blue",
+			"points": 3,
+			"white": 3,
+			"blue": 0,
+			"black": 5,
+			"red": 3,
+			"green": 3
+		},
+		{
+			"color": "blue",
+			"points": 4,
+			"white": 7,
+			"blue": 0,
+			"black": 0,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "blue",
+			"points": 4,
+			"white": 6,
+			"blue": 3,
+			"black": 3,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "blue",
+			"points": 5,
+			"white": 7,
+			"blue": 3,
+			"black": 0,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "black",
+			"points": 5,
+			"white": 0,
+			"blue": 0,
+			"black": 3,
+			"red": 7,
+			"green": 0
+		},
+		{
+			"color": "black",
+			"points": 3,
+			"white": 3,
+			"blue": 3,
+			"black": 0,
+			"red": 3,
+			"green": 5
+		},
+		{
+			"color": "black",
+			"points": 4,
+			"white": 0,
+			"blue": 0,
+			"black": 3,
+			"red": 6,
+			"green": 3
+		},
+		{
+			"color": "black",
+			"points": 4,
+			"white": 0,
+			"blue": 0,
+			"black": 0,
+			"red": 7,
+			"green": 0
+		},
+		{
+			"color": "red",
+			"points": 5,
+			"white": 0,
+			"blue": 0,
+			"black": 0,
+			"red": 3,
+			"green": 7
+		},
+		{
+			"color": "red",
+			"points": 4,
+			"white": 0,
+			"blue": 3,
+			"black": 0,
+			"red": 3,
+			"green": 6
+		},
+		{
+			"color": "red",
+			"points": 4,
+			"white": 0,
+			"blue": 0,
+			"black": 0,
+			"red": 0,
+			"green": 7
+		},
+		{
+			"color": "red",
+			"points": 3,
+			"white": 3,
+			"blue": 5,
+			"black": 3,
+			"red": 0,
+			"green": 3
+		},
+		{
+			"color": "green",
+			"points": 3,
+			"white": 5,
+			"blue": 3,
+			"black": 3,
+			"red": 3,
+			"green": 0
+		},
+		{
+			"color": "green",
+			"points": 4,
+			"white": 0,
+			"blue": 7,
+			"black": 0,
+			"red": 0,
+			"green": 0
+		},
+		{
+			"color": "green",
+			"points": 5,
+			"white": 0,
+			"blue": 7,
+			"black": 0,
+			"red": 0,
+			"green": 3
+		},
+		{
+			"color": "green",
+			"points": 4,
+			"white": 3,
+			"blue": 6,
+			"black": 0,
+			"red": 0,
+			"green": 3
+		}
+	]
+}
