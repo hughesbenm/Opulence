@@ -28,7 +28,6 @@ export const Activity = () => {
 			}
 		})
 	}, [authenticated, discordSdk])
-
 	return (
 		<Stack
 			display={'flex'}

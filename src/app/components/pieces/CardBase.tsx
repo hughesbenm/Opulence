@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { CARD_HEIGHT, CARD_WIDTH, CardQuality, Color, MINI_GEM_FONT_SIZE } from "../../types";
+import { CARD_HEIGHT, CARD_WIDTH, CardData, CardQuality, Color, MINI_GEM_FONT_SIZE } from "../../types";
 
 interface CardBaseProps {
 	color: Color | CardQuality;
@@ -9,6 +9,7 @@ interface CardBaseProps {
 	className?: string;
 	fontSize?: string;
 	invisible?: boolean;
+	amount?: number;
 }
 
 const CardBase: React.FC<CardBaseProps> = ({
@@ -18,7 +19,8 @@ const CardBase: React.FC<CardBaseProps> = ({
 	children,
 	className = "",
 	fontSize = MINI_GEM_FONT_SIZE,
-	invisible = false
+	invisible = false,
+	amount
 }) => {
 	return (
 		<Box
@@ -31,6 +33,9 @@ const CardBase: React.FC<CardBaseProps> = ({
 				visibility: invisible ? 'hidden' : 'visible'
 			}}
 		>
+			{amount !== undefined && (
+				<p className="text">{amount}</p>
+			)}
 			{children}
 		</Box>
 	)

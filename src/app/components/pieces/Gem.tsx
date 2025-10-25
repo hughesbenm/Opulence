@@ -10,7 +10,14 @@ export interface GemProps {
 	onClick?: () => void;
 }
 
-const Gem: React.FC<GemProps> = ({onClick, color, amount, noBorder = false, height = GEM_HEIGHT, fontSize = GEM_FONT_SIZE}) => {
+const Gem: React.FC<GemProps> = ({
+	onClick,
+	color,
+	amount,
+	noBorder = false,
+	height = GEM_HEIGHT,
+	fontSize = GEM_FONT_SIZE,
+}) => {
 	return (
 		<Box
 			className="gem"
@@ -21,7 +28,8 @@ const Gem: React.FC<GemProps> = ({onClick, color, amount, noBorder = false, heig
 				borderStyle: noBorder ? 'hidden' : 'solid',
 				height: height,
 				width: height,
-				fontSize: fontSize
+				fontSize: fontSize,
+				visibility: (amount === 0 ? 'hidden' : 'visible')
 			}}
 		>
 			<h1 className={"text"}>

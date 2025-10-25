@@ -4,12 +4,13 @@ import Gem from "./Gem";
 
 interface StashCardProps {
 	color: Color | CardQuality;
+	amount?: number;
 }
 
-const StashCard: React.FC<StashCardProps> = ({color}) => {
+const StashCard: React.FC<StashCardProps> = ({color, amount}) => {
 	
 	return (
-		<CardBase color={color} />
+		<CardBase invisible={amount === 0} color={color} amount={amount}/>
 	)
 }
 

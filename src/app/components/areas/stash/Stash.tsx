@@ -1,11 +1,14 @@
 import { Box, Stack, Typography } from "@mui/material";
-import { CardQuality, Color, GOLD } from "../../../types";
+import { CardData, CardQuality, CardStashData, Color, DeckData, emptyCards, emptyGems, GemData, GOLD } from "../../../types";
 import Gem from "../../pieces/Gem";
 import StashCard from "../../pieces/StashCard";
 import BoardArea from "../../layout/BoardArea";
 import BuyingPower from "../../pieces/BuyingPower";
 import MarketCard from "../../pieces/MarketCard";
 import Noble from "../../pieces/Noble";
+import { useSyncState } from "@robojs/sync";
+import { useEffect } from "react";
+import { useStashGems } from "../../../hooks/sharedData";
 
 interface StashProps {
 
@@ -13,6 +16,15 @@ interface StashProps {
 
 const Stash: React.FC<StashProps> = ({}) => {
 	
+	const [stashGems, setStashGems] = useStashGems();
+	const [stashCards, setStashCards] = useSyncState<CardStashData>(emptyCards, ["testPlayerId", "stashCards"])
+
+	useEffect(() => {
+		if (stashGems === undefined) {
+			setStashGems(emptyGems); // only initialize once
+		}
+	}, [stashGems]);
+
 	return (
 		<BoardArea name={"Stash"}>
 			<Box
@@ -39,10 +51,10 @@ const Stash: React.FC<StashProps> = ({}) => {
 							}}
 						>
 							<BuyingPower amount={0} color={color} />
-							<StashCard color={color}/>
+							<StashCard amount={stashCards[color].length} color={color}/>
 							<Gem
 								color={color}
-								amount={5}
+								amount={stashGems !== undefined ? stashGems[color] : 0}
 							/>
 						</Stack>
 					)
@@ -54,7 +66,7 @@ const Stash: React.FC<StashProps> = ({}) => {
 						height: '100%'
 					}}
 				>
-					<Gem color={GOLD} amount={0} />
+					<Gem color={GOLD} amount={stashGems !== undefined ? stashGems[GOLD] : 0} />
 				</Box>
 				<Stack
 					sx={{
@@ -71,8 +83,8 @@ const Stash: React.FC<StashProps> = ({}) => {
 							alignItems: 'center',
 							height: '100%'
 						}}
-						>
-						<MarketCard color={Color.BLUE} white={1}/>
+					>
+						<MarketCard color={Color.BLUE} />
 						<MarketCard color={Color.BLACK} />
 						<MarketCard color={Color.RED} />
 					</Box>
