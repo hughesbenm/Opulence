@@ -8,6 +8,7 @@ export interface GemProps {
 	height?: string;
 	fontSize?: string;
 	onClick?: () => void;
+	highlighted?: boolean;
 }
 
 const Gem: React.FC<GemProps> = ({
@@ -17,13 +18,27 @@ const Gem: React.FC<GemProps> = ({
 	noBorder = false,
 	height = GEM_HEIGHT,
 	fontSize = GEM_FONT_SIZE,
+	highlighted = false
 }) => {
+
+	const getBorderColor = () => {
+		if (highlighted) {
+			if (color === Color.WHITE) {
+				return 'black';
+			} else {
+				return 'white';
+			}
+		} else {
+			return `color-mix(in srgb, ${color}, ${color === Color.BLACK ? 'white 25%' : 'black 20%'})`
+		}
+	}
+
 	return (
 		<Box
 			className="gem"
 			onClick={onClick}
 			sx={{
-				borderColor: `color-mix(in srgb, ${color}, ${color === Color.BLACK ? 'white 25%' : 'black 20%'})`,
+				borderColor: getBorderColor(),
 				bgcolor: color,
 				borderStyle: noBorder ? 'hidden' : 'solid',
 				height: height,

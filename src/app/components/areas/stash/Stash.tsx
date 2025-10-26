@@ -21,9 +21,19 @@ const Stash: React.FC<StashProps> = ({}) => {
 
 	useEffect(() => {
 		if (stashGems === undefined) {
-			setStashGems(emptyGems); // only initialize once
+			setStashGems(emptyGems);
 		}
 	}, [stashGems]);
+
+	useEffect(() => {
+		if (stashGems === undefined) {
+			setStashCards(emptyCards);
+		}
+	}, [stashGems]);
+
+	if (stashGems === undefined || stashCards === undefined) {
+		return <p>Loading</p>
+	}
 
 	return (
 		<BoardArea name={"Stash"}>

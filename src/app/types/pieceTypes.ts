@@ -28,6 +28,14 @@ export const MINI_GEM_FONT_SIZE = 'xx-small';
 
 export const BUYING_POWER_HEIGHT = GEM_HEIGHT;
 
+export interface BuyingPower {
+	[Color.WHITE]?: number;
+	[Color.BLUE]?: number;
+	[Color.BLACK]?: number;
+	[Color.RED]?: number;
+	[Color.GREEN]?: number;
+}
+
 export interface CardData {
 	color: Color;
 	points?: number;

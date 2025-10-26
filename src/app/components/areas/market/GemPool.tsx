@@ -16,10 +16,6 @@ const GemPool: React.FC<GemPoolProps> = () => {
 	const [stashGems, setStashGems] = useStashGems();
 
 	const addGem = (color: Color | GOLD_TYPE) => {
-		console.log(color)
-		console.log(gems)
-		console.log(gems[color])
-		console.log(stashGems)
 		if (gems[color] !== 0 && stashGems !== undefined) {
 			let newGems = {...gems};
 			newGems[color] = newGems[color] - 1;

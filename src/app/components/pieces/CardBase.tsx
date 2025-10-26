@@ -10,6 +10,7 @@ interface CardBaseProps {
 	fontSize?: string;
 	invisible?: boolean;
 	amount?: number;
+	onClick?: () => void;
 }
 
 const CardBase: React.FC<CardBaseProps> = ({
@@ -20,7 +21,8 @@ const CardBase: React.FC<CardBaseProps> = ({
 	className = "",
 	fontSize = MINI_GEM_FONT_SIZE,
 	invisible = false,
-	amount
+	amount,
+	onClick
 }) => {
 	return (
 		<Box
@@ -32,6 +34,7 @@ const CardBase: React.FC<CardBaseProps> = ({
 				fontSize: fontSize,
 				visibility: invisible ? 'hidden' : 'visible'
 			}}
+			onClick={onClick}
 		>
 			{amount !== undefined && (
 				<p className="text">{amount}</p>

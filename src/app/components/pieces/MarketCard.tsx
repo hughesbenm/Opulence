@@ -7,17 +7,24 @@ type MarketCardProps =
 {
 	color: CardQuality | Color;
 	cardData?: never;
+	onClick?: never;
 } | {
 	color?: never;
 	cardData: CardData;
+	onClick?: () => void;
 }
 
 const MarketCard: React.FC<MarketCardProps> = ({
 	color,
-	cardData
+	cardData,
+	onClick
 }) => {	
+	if (cardData === undefined && color === undefined) {
+		return <p>Loading</p>
+	}
+
 	return (
-		<CardBase color={color ?? cardData.color} className={"market_card"}>
+		<CardBase color={color ?? cardData.color} className={"market_card"} onClick={onClick}>
 			{cardData !== undefined && (
 				<>
 					<Stack>
