@@ -8,14 +8,14 @@ import MarketCard from "../../pieces/MarketCard";
 import Noble from "../../pieces/Noble";
 import { useSyncState } from "@robojs/sync";
 import { useEffect } from "react";
-import { useStashGems } from "../../../hooks/sharedData";
+import { useBuyingPower, useStashGems } from "../../../hooks/sharedData";
 
 interface StashProps {
 
 }
 
 const Stash: React.FC<StashProps> = ({}) => {
-	
+	const buyingPower = useBuyingPower();
 	const [stashGems, setStashGems] = useStashGems();
 	const [stashCards, setStashCards] = useSyncState<CardStashData>(emptyCards, ["testPlayerId", "stashCards"])
 
@@ -60,7 +60,7 @@ const Stash: React.FC<StashProps> = ({}) => {
 								height: '100%',
 							}}
 						>
-							<BuyingPower amount={0} color={color} />
+							<BuyingPower amount={buyingPower[color]} color={color} />
 							<StashCard amount={stashCards[color].length} color={color}/>
 							<Gem
 								color={color}

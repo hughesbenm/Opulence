@@ -29,11 +29,11 @@ export const MINI_GEM_FONT_SIZE = 'xx-small';
 export const BUYING_POWER_HEIGHT = GEM_HEIGHT;
 
 export interface BuyingPower {
-	[Color.WHITE]?: number;
-	[Color.BLUE]?: number;
-	[Color.BLACK]?: number;
-	[Color.RED]?: number;
-	[Color.GREEN]?: number;
+	[Color.WHITE]: number;
+	[Color.BLUE]: number;
+	[Color.BLACK]: number;
+	[Color.RED]: number;
+	[Color.GREEN]: number;
 }
 
 export interface CardData {
@@ -63,9 +63,9 @@ export const emptyCards: CardStashData = {
 }
 
 export interface DeckData {
-	one: CardData[];
-	two: CardData[];
-	three: CardData[];
+	[CardQuality.ONE]: CardData[];
+	[CardQuality.TWO]: CardData[];
+	[CardQuality.THREE]: CardData[];
 }
 
 export interface GemData {

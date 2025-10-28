@@ -3,7 +3,7 @@ import Gem from "../../pieces/Gem";
 import { Color, emptyGems, fourPlayerGems, GemData, GOLD, GOLD_TYPE, threePlayerGems, twoPlayerGems } from "../../../types";
 import { useEffect, useState } from "react";
 import { useSyncState } from "@robojs/sync";
-import { useStashGems } from "../../../hooks/sharedData";
+import { useMarketGems, useStashGems } from "../../../hooks/sharedData";
 
 interface GemPoolProps {
 
@@ -11,15 +11,25 @@ interface GemPoolProps {
 
 
 const GemPool: React.FC<GemPoolProps> = () => {
-	
-	const [gems, setGems] = useSyncState<GemData>(threePlayerGems, ['gems'])
+	const [marketGems, setMarketGems] = useMarketGems();
 	const [stashGems, setStashGems] = useStashGems();
 
+	useEffect(() => {
+		if (marketGems === undefined) {
+			setMarketGems(fourPlayerGems);
+		}
+		console.log("gems", marketGems)
+	}, [marketGems]);
+
+	if (marketGems === undefined || stashGems === undefined) {
+		return <p>Loading</p>
+	}
+
 	const addGem = (color: Color | GOLD_TYPE) => {
-		if (gems[color] !== 0 && stashGems !== undefined) {
-			let newGems = {...gems};
+		if (marketGems[color] !== 0 && stashGems !== undefined) {
+			let newGems = {...marketGems};
 			newGems[color] = newGems[color] - 1;
-			setGems(newGems);
+			setMarketGems(newGems);
 			let newStashGems = {...stashGems};
 			newStashGems[color] = newStashGems[color] + 1;
 			setStashGems(newStashGems);
@@ -40,10 +50,10 @@ const GemPool: React.FC<GemPoolProps> = () => {
 		>
 			{Object.values(Color).map((color) => {
 				return (
-					<Gem key={color} color={color} amount={gems[color]} onClick={() => addGem(color)}/>
+					<Gem key={color} color={color} amount={marketGems[color]} onClick={() => addGem(color)}/>
 				)
 			})}
-			<Gem color={GOLD} amount={gems[GOLD]} onClick={() => addGem(GOLD)} />
+			<Gem color={GOLD} amount={marketGems[GOLD]} onClick={() => addGem(GOLD)} />
 		</Box>
 	)
 }

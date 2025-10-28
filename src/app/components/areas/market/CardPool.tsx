@@ -1,95 +1,101 @@
 import { Box, Card } from "@mui/material";
-import { CardData, CardQuality, Color, GOLD } from "../../../types";
+import { CardData, CardQuality, Color, DeckData, GOLD } from "../../../types";
 import MarketCard from "../../pieces/MarketCard";
 import { useSyncState } from "@robojs/sync";
 import { useEffect } from "react";
 import { cardsData } from "../../../../../data/cards";
 import { shuffle } from "../../../utils/shuffle";
-import { useBuyingPower, useStashCards, useStashGems } from "../../../hooks/sharedData";
+import { useBuyingPower, useMarketCards, useMarketGems, useStashCards, useStashGems } from "../../../hooks/sharedData";
 import { color } from "robo.js";
 
 interface CardPoolProps {
 
 }
 
-const CardPool: React.FC<CardPoolProps> = () => {	
-	const [ones, setOnes] = useSyncState<CardData[] | undefined>(undefined, ["one"]);
-	const [twos, setTwos] = useSyncState<CardData[] | undefined>(undefined, ["two"]);
-	const [threes, setThrees] = useSyncState<CardData[] | undefined>(undefined, ["three"]);
+const CardPool: React.FC<CardPoolProps> = () => {
 	const buyingPower = useBuyingPower();
 	const [stashGems, setStashGems] = useStashGems();
 	const [stashCards, setStashCards] = useStashCards();
-	
-	useEffect(() => {
-		console.log("ones", ones)
-	}, [ones])
+	const [marketGems, setMarketGems] = useMarketGems();
+	const [marketCards, setMarketCards] = useMarketCards();
 
 	useEffect(() => {
-		if (ones === undefined) {
-			setOnes(shuffle(cardsData.one));
+		if (marketCards === undefined) {
+			setMarketCards({
+				[CardQuality.ONE]: shuffle(cardsData["one"] as CardData[]),
+				[CardQuality.TWO]: shuffle(cardsData["two"] as CardData[]),
+				[CardQuality.THREE]: shuffle(cardsData["three"] as CardData[])
+			});
 		}
-		if (twos === undefined) {
-			setTwos(shuffle(cardsData.two));
-		}
-		if (threes === undefined) {
-			setThrees(shuffle(cardsData.three));
-		}
-	}, [])
+		console.log("marketCards", marketCards)
+	}, [marketCards])
 
-	if (ones === undefined || twos == undefined || threes == undefined || stashGems === undefined || stashCards === undefined) {
+	if (marketCards === undefined || marketGems === undefined || stashGems === undefined || stashCards === undefined) {
 		return <p>Loading</p>
 	}
 
 	const buyCard = (cardQuality: CardQuality, index: number) => {
-		let card = undefined;
-		if (cardQuality === CardQuality.ONE) {
-			card = ones[index];
-		} else if (cardQuality === CardQuality.TWO) {
-			card = twos[index];
-		} else if (cardQuality === CardQuality.THREE) {
-			card = threes[index];
+		let card: CardData | undefined = undefined;
+		for (const quality of Array.from(Object.values(CardQuality))) {
+			if (cardQuality === quality) {
+				card = marketCards[quality as CardQuality][index];
+				break;
+			}
 		}
 		if (card === undefined) {
 			return;
 		}
 		const golds: number = stashGems![GOLD];
-		let goldsNeeded: number = 0;
 		let canBuy: boolean = true;
+		let gemCosts = {
+			[Color.WHITE]: 0,
+			[Color.BLUE]: 0,
+			[Color.BLACK]: 0,
+			[Color.RED]: 0,
+			[Color.GREEN]: 0,
+			[GOLD]: 0
+		}
 		Array.from(Object.values(Color)).forEach((color: Color) => {
-			if (!canBuy) {
+			if (!canBuy || card === undefined) {
 				return;
 			}
-			if (card[color] !== undefined && buyingPower[color] !== undefined && card[color] > buyingPower[color]) {
-				if (golds > card[color] - buyingPower[color]) {
-					goldsNeeded += card[color] - buyingPower[color];
-				} else {
-					canBuy = false;
+			if (card[color] !== undefined) {
+				if (buyingPower[color] !== undefined && card[color] > buyingPower[color]) {
+					if (golds > card[color] - buyingPower[color]) {
+						gemCosts[GOLD] += card[color] - buyingPower[color];
+					} else {
+						canBuy = false;
+					}
 				}
+				gemCosts[color] = card[color] - stashCards[color].length;
 			}
 		})
-		if (!canBuy || goldsNeeded > golds) {
+		if (!canBuy || gemCosts[GOLD] > golds) {
 			return;
 		}
-		console.log("You can buy it!")
 		let newStashCards = {...stashCards};
 		newStashCards[card.color].push(card);
 		setStashCards(newStashCards);
-		if (cardQuality === CardQuality.ONE) {
-			setOnes(ones.splice(index))
-		} else if (cardQuality === CardQuality.TWO) {
-			setOnes(twos.splice(index))
-		} else if (cardQuality === CardQuality.THREE) {
-			setOnes(threes.splice(index))
-		}
-	}
-
-	const killFirst = () => {
-		console.log("test?")
-		let newOnes = [...ones];
-		console.log(ones);
-		newOnes.splice(0, 1);
-		console.log(newOnes)
-		setOnes(newOnes);
+		let newMarketCards: DeckData = {...marketCards};
+		newMarketCards[cardQuality].splice(index, 1, newMarketCards[cardQuality][4]);
+		newMarketCards[cardQuality].splice(4, 1);
+		setMarketCards(newMarketCards);
+		setStashGems({
+			[Color.WHITE]: stashGems[Color.WHITE] - gemCosts[Color.WHITE],
+			[Color.BLUE]: stashGems[Color.BLUE] - gemCosts[Color.BLUE],
+			[Color.BLACK]: stashGems[Color.BLACK] - gemCosts[Color.BLACK],
+			[Color.RED]: stashGems[Color.RED] - gemCosts[Color.RED],
+			[Color.GREEN]: stashGems[Color.GREEN] - gemCosts[Color.GREEN],
+			[GOLD]: stashGems[Color.WHITE] - gemCosts[GOLD],
+		});
+		setMarketGems({
+			[Color.WHITE]: marketGems[Color.WHITE] + gemCosts[Color.WHITE],
+			[Color.BLUE]: marketGems[Color.BLUE] + gemCosts[Color.BLUE],
+			[Color.BLACK]: marketGems[Color.BLACK] + gemCosts[Color.BLACK],
+			[Color.RED]: marketGems[Color.RED] + gemCosts[Color.RED],
+			[Color.GREEN]: marketGems[Color.GREEN] + gemCosts[Color.GREEN],
+			[GOLD]: marketGems[GOLD] + gemCosts[GOLD],
+		})
 	}
 
 	return (
@@ -103,8 +109,9 @@ const CardPool: React.FC<CardPoolProps> = () => {
 				minWidth: 0
 			}}
 		>
-			{threes != undefined && (
-				<Box
+			{marketCards !== undefined && Array.from(Object.values(CardQuality)).map((quality: CardQuality) => {
+				return <Box
+					key={quality}
 					sx={{
 						display: 'flex',
 						flexGrow: 1,
@@ -115,51 +122,13 @@ const CardPool: React.FC<CardPoolProps> = () => {
 						alignSelf: 'stretch'
 					}}
 				>
-					<MarketCard color={CardQuality.THREE}/>
-					<MarketCard cardData={threes[0]} onClick={() => {buyCard(CardQuality.THREE, 0)}}/>
-					<MarketCard cardData={threes[1]} onClick={() => {buyCard(CardQuality.THREE, 1)}}/>
-					<MarketCard cardData={threes[2]} onClick={() => {buyCard(CardQuality.THREE, 2)}}/>
-					<MarketCard cardData={threes[3]} onClick={() => {buyCard(CardQuality.THREE, 3)}}/>
+					<MarketCard color={quality}/>
+					<MarketCard cardData={marketCards[quality][0]} onClick={() => {buyCard(quality, 0)}}/>
+					<MarketCard cardData={marketCards[quality][1]} onClick={() => {buyCard(quality, 1)}}/>
+					<MarketCard cardData={marketCards[quality][2]} onClick={() => {buyCard(quality, 2)}}/>
+					<MarketCard cardData={marketCards[quality][3]} onClick={() => {buyCard(quality, 3)}}/>
 				</Box>
-			)}
-			{twos != undefined && (
-				<Box
-					sx={{
-						display: 'flex',
-						flexGrow: 1,
-						justifyContent: 'space-evenly',
-						alignItems: 'center',
-						minWidth: 0,
-						flexBasis: 0,
-						alignSelf: 'stretch'
-					}}
-				>
-					<MarketCard color={CardQuality.TWO}/>
-					<MarketCard cardData={twos[0]} onClick={() => {buyCard(CardQuality.TWO, 0)}}/>
-					<MarketCard cardData={twos[1]} onClick={() => {buyCard(CardQuality.TWO, 1)}}/>
-					<MarketCard cardData={twos[2]} onClick={() => {buyCard(CardQuality.TWO, 2)}}/>
-					<MarketCard cardData={twos[3]} onClick={() => {buyCard(CardQuality.TWO, 3)}}/>
-				</Box>
-			)}
-			{ones != undefined && (
-				<Box
-					sx={{
-						display: 'flex',
-						flexGrow: 1,
-						justifyContent: 'space-evenly',
-						alignItems: 'center',
-						minWidth: 0,
-						flexBasis: 0,
-						alignSelf: 'stretch'
-					}}
-				>
-					<MarketCard color={CardQuality.ONE}/>
-					<MarketCard cardData={ones[0]} onClick={() => {killFirst()}}/>
-					<MarketCard cardData={ones[1]} onClick={() => {buyCard(CardQuality.ONE, 1)}}/>
-					<MarketCard cardData={ones[2]} onClick={() => {buyCard(CardQuality.ONE, 2)}}/>
-					<MarketCard cardData={ones[3]} onClick={() => {buyCard(CardQuality.ONE, 3)}}/>
-				</Box>
-			)}
+			})}
 		</Box>
 	)
 }

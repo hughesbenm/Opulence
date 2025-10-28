@@ -1,5 +1,5 @@
 import { useSyncState } from "@robojs/sync"
-import { BuyingPower, CardStashData, Color, GemData } from "../types";
+import { BuyingPower, CardStashData, Color, DeckData, GemData } from "../types";
 
 export const useStashGems = () => {
 	return useSyncState<undefined | GemData>(undefined, ['testPlayerId', 'stashGems']);
@@ -7,6 +7,14 @@ export const useStashGems = () => {
 
 export const useStashCards = () => {
 	return useSyncState<undefined | CardStashData>(undefined, ['testPlayerId', 'stashCards']);
+}
+
+export const useMarketGems = () => {
+	return useSyncState<undefined | GemData>(undefined, ['testPlayerId', 'marketGems']);
+}
+
+export const useMarketCards = () => {
+	return useSyncState<undefined | DeckData>(undefined, ['testPlayerId', 'marketCards']);
 }
 
 export const useBuyingPower = (): BuyingPower => {
