@@ -1,12 +1,10 @@
-import { Box, Card } from "@mui/material";
+import { Box } from "@mui/material";
 import { CardData, CardQuality, Color, DeckData, GOLD } from "../../../types";
 import MarketCard from "../../pieces/MarketCard";
-import { useSyncState } from "@robojs/sync";
 import { useEffect } from "react";
 import { cardsData } from "../../../../../data/cards";
 import { shuffle } from "../../../utils/shuffle";
 import { useBuyingPower, useMarketCards, useMarketGems, useStashCards, useStashGems } from "../../../hooks/sharedData";
-import { color } from "robo.js";
 
 interface CardPoolProps {
 

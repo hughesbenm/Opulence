@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useDiscordSdk } from '../hooks/useDiscordSdk'
-import { Box, Stack } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import ActiveGame from './components/ActiveGame'
+import Lobby from './components/Lobby'
+import { useGameStarted, useLobbyMembers, usePlayers } from './hooks/sharedData'
+import { LobbyMember, Player } from './types/gameTypes'
+import { emptyCards, emptyGems } from './types'
 
 /**
  * This is your Discord Activity's main component. Customize it as you like!
@@ -10,8 +14,11 @@ import ActiveGame from './components/ActiveGame'
  * https://robojs.dev/discord-activities
  */
 export const Activity = () => {
-	const { authenticated, discordSdk, status } = useDiscordSdk()
-	const [channelName, setChannelName] = useState<string>()
+	const { authenticated, discordSdk, status, session } = useDiscordSdk();
+	const [channelName, setChannelName] = useState<string>();
+	const [gameStarted, setGameStarted] = useGameStarted();
+	const [players, setPlayers] = usePlayers();
+	const [lobbyMembers, setLobbyMembers] = useLobbyMembers();
 
 	useEffect(() => {
 		// Requesting the channel in GDMs (when the guild ID is null) requires
@@ -27,14 +34,37 @@ export const Activity = () => {
 				setChannelName(channel.name)
 			}
 		})
+		// console.log(session?.user.id)
+		
 	}, [authenticated, discordSdk])
+
+	useEffect(() => {
+		if (
+				session !== null
+				&& (
+					lobbyMembers === undefined
+					|| lobbyMembers.some((lobbyMember) => lobbyMember.id === session?.user.id)
+				)
+			) {
+			console.log("add player")
+			const currentLobbyMembers: LobbyMember[] = lobbyMembers === undefined ? [] : lobbyMembers;
+			const newLobbyMember: LobbyMember = {
+				id: session!.user.id, 
+				name: session!.user.global_name!,
+				icon: session!.user.avatar ?? "",
+				ready: false
+			};
+			setLobbyMembers([...currentLobbyMembers, newLobbyMember]);
+		}
+	}, [session])
+	
 	return (
 		<Stack
 			display={'flex'}
 			sx={{
 				height: '100%',
 				width: '100%',
-				flexBasis: 0
+				flexBasis: 0,
 			}}
 		>
 			<Box
@@ -46,8 +76,23 @@ export const Activity = () => {
 					width={175}
 				/>
 			</Box>
-			<ActiveGame/>
-
+			<Box
+				sx={{
+					flexGrow: 1,
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					borderRadius: '25px',
+					margin: '10px'
+				}}
+			>
+				{/* <Typography>{session !== null ? session!.user.id : 'nobody'}</Typography>
+				<Typography>{session === null ? 'null' : 'not null'}</Typography> */}
+				{gameStarted
+					? <ActiveGame />
+					: <Lobby />
+				}
+			</Box>
 		</Stack>
 	)
 }

@@ -1,5 +1,18 @@
 import { useSyncState } from "@robojs/sync"
 import { BuyingPower, CardStashData, Color, DeckData, GemData } from "../types";
+import { LobbyMember, Player } from "../types/gameTypes";
+
+export const useLobbyMembers = () => {
+	return useSyncState<undefined | LobbyMember[]>(undefined, ['lobbyMembers']);
+}
+
+export const usePlayers = () => {
+	return useSyncState<undefined | Player[]>(undefined, ['players']);
+}
+
+export const useGameStarted = () => {
+	return useSyncState<undefined | boolean>(undefined, ['gameStarted']);
+}
 
 export const useStashGems = () => {
 	return useSyncState<undefined | GemData>(undefined, ['testPlayerId', 'stashGems']);
