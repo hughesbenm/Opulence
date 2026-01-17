@@ -1,4 +1,4 @@
-import { CardData, CardStashData, GemData } from "./pieceTypes"
+import { CardData, CardStashData, GemData, NobleData } from "./pieceTypes"
 
 export type Player = {
 	id: string,
@@ -7,6 +7,7 @@ export type Player = {
 	gems: GemData,
 	hand: CardData[],
 	stash: CardStashData
+	nobles: NobleData[];
 }
 
 export type LobbyMember = {
@@ -15,3 +16,5 @@ export type LobbyMember = {
 	icon: string,
 	ready: boolean
 }
+
+export type PlayerMap = Map<string, Player>;

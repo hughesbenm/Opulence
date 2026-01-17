@@ -17,8 +17,8 @@ export const Activity = () => {
 	const { authenticated, discordSdk, status, session } = useDiscordSdk();
 	const [channelName, setChannelName] = useState<string>();
 	const [gameStarted, setGameStarted] = useGameStarted();
-	const [players, setPlayers] = usePlayers();
 	const [lobbyMembers, setLobbyMembers] = useLobbyMembers();
+	const [players, setPlayers] = usePlayers();
 
 	useEffect(() => {
 		// Requesting the channel in GDMs (when the guild ID is null) requires
@@ -39,14 +39,10 @@ export const Activity = () => {
 	}, [authenticated, discordSdk])
 
 	useEffect(() => {
-		if (
-				session !== null
-				&& (
-					lobbyMembers === undefined
-					|| lobbyMembers.some((lobbyMember) => lobbyMember.id === session?.user.id)
-				)
-			) {
-			console.log("add player")
+		if (session === null) {
+			return;
+		}
+		if (lobbyMembers === undefined || !lobbyMembers.some((lobbyMember) => lobbyMember.id === session.user.id)) {
 			const currentLobbyMembers: LobbyMember[] = lobbyMembers === undefined ? [] : lobbyMembers;
 			const newLobbyMember: LobbyMember = {
 				id: session!.user.id, 
@@ -56,7 +52,16 @@ export const Activity = () => {
 			};
 			setLobbyMembers([...currentLobbyMembers, newLobbyMember]);
 		}
+		if (players === undefined) {
+			let testMap: Record<string, Player> = {};
+			console.log("setting players:", testMap)
+			setPlayers(testMap);
+		}
 	}, [session])
+
+	useEffect(() => {
+		console.log("New Players:" , players)
+	}, [players])
 	
 	return (
 		<Stack
@@ -86,8 +91,6 @@ export const Activity = () => {
 					margin: '10px'
 				}}
 			>
-				{/* <Typography>{session !== null ? session!.user.id : 'nobody'}</Typography>
-				<Typography>{session === null ? 'null' : 'not null'}</Typography> */}
 				{gameStarted
 					? <ActiveGame />
 					: <Lobby />

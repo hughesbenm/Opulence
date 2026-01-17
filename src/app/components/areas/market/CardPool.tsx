@@ -12,21 +12,10 @@ interface CardPoolProps {
 
 const CardPool: React.FC<CardPoolProps> = () => {
 	const buyingPower = useBuyingPower();
-	const [stashGems, setStashGems] = useStashGems();
-	const [stashCards, setStashCards] = useStashCards();
+	const { stashGems, setStashGems } = useStashGems();
+	const { stashCards, setStashCards } = useStashCards();
 	const [marketGems, setMarketGems] = useMarketGems();
 	const [marketCards, setMarketCards] = useMarketCards();
-
-	useEffect(() => {
-		if (marketCards === undefined) {
-			setMarketCards({
-				[CardQuality.ONE]: shuffle(cardsData["one"] as CardData[]),
-				[CardQuality.TWO]: shuffle(cardsData["two"] as CardData[]),
-				[CardQuality.THREE]: shuffle(cardsData["three"] as CardData[])
-			});
-		}
-		console.log("marketCards", marketCards)
-	}, [marketCards])
 
 	if (marketCards === undefined || marketGems === undefined || stashGems === undefined || stashCards === undefined) {
 		return <p>Loading</p>
@@ -59,22 +48,24 @@ const CardPool: React.FC<CardPoolProps> = () => {
 			}
 			if (card[color] !== undefined) {
 				if (buyingPower[color] !== undefined && card[color] > buyingPower[color]) {
-					if (golds > card[color] - buyingPower[color]) {
+					if (golds >= card[color] - buyingPower[color]) {
 						gemCosts[GOLD] += card[color] - buyingPower[color];
+						gemCosts[color] = buyingPower[color] - stashCards[color].length;
 					} else {
 						canBuy = false;
 					}
+				} else {
+					gemCosts[color] = card[color] - stashCards[color].length;
 				}
-				gemCosts[color] = card[color] - stashCards[color].length;
 			}
 		})
 		if (!canBuy || gemCosts[GOLD] > golds) {
 			return;
 		}
-		let newStashCards = {...stashCards};
+		let newStashCards = { ...stashCards };
 		newStashCards[card.color].push(card);
 		setStashCards(newStashCards);
-		let newMarketCards: DeckData = {...marketCards};
+		let newMarketCards: DeckData = { ...marketCards };
 		newMarketCards[cardQuality].splice(index, 1, newMarketCards[cardQuality][4]);
 		newMarketCards[cardQuality].splice(4, 1);
 		setMarketCards(newMarketCards);
@@ -84,7 +75,7 @@ const CardPool: React.FC<CardPoolProps> = () => {
 			[Color.BLACK]: stashGems[Color.BLACK] - gemCosts[Color.BLACK],
 			[Color.RED]: stashGems[Color.RED] - gemCosts[Color.RED],
 			[Color.GREEN]: stashGems[Color.GREEN] - gemCosts[Color.GREEN],
-			[GOLD]: stashGems[Color.WHITE] - gemCosts[GOLD],
+			[GOLD]: stashGems[GOLD] - gemCosts[GOLD],
 		});
 		setMarketGems({
 			[Color.WHITE]: marketGems[Color.WHITE] + gemCosts[Color.WHITE],
@@ -120,11 +111,11 @@ const CardPool: React.FC<CardPoolProps> = () => {
 						alignSelf: 'stretch'
 					}}
 				>
-					<MarketCard color={quality}/>
-					<MarketCard cardData={marketCards[quality][0]} onClick={() => {buyCard(quality, 0)}}/>
-					<MarketCard cardData={marketCards[quality][1]} onClick={() => {buyCard(quality, 1)}}/>
-					<MarketCard cardData={marketCards[quality][2]} onClick={() => {buyCard(quality, 2)}}/>
-					<MarketCard cardData={marketCards[quality][3]} onClick={() => {buyCard(quality, 3)}}/>
+					<MarketCard color={quality} />
+					<MarketCard cardData={marketCards[quality][0]} onClick={() => { buyCard(quality, 0) }} />
+					<MarketCard cardData={marketCards[quality][1]} onClick={() => { buyCard(quality, 1) }} />
+					<MarketCard cardData={marketCards[quality][2]} onClick={() => { buyCard(quality, 2) }} />
+					<MarketCard cardData={marketCards[quality][3]} onClick={() => { buyCard(quality, 3) }} />
 				</Box>
 			})}
 		</Box>

@@ -1,13 +1,14 @@
 import { useSyncState } from "@robojs/sync"
-import { BuyingPower, CardStashData, Color, DeckData, GemData } from "../types";
-import { LobbyMember, Player } from "../types/gameTypes";
+import { BuyingPower, CardData, CardStashData, Color, DeckData, emptyGems, GemData, NobleData } from "../types";
+import { LobbyMember, Player, PlayerMap } from "../types/gameTypes";
+import { useDiscordSdk } from "../../hooks/useDiscordSdk";
 
 export const useLobbyMembers = () => {
 	return useSyncState<undefined | LobbyMember[]>(undefined, ['lobbyMembers']);
 }
 
 export const usePlayers = () => {
-	return useSyncState<undefined | Player[]>(undefined, ['players']);
+	return useSyncState<undefined | Record<string, Player>>(undefined, ['players']);
 }
 
 export const useGameStarted = () => {
@@ -15,24 +16,104 @@ export const useGameStarted = () => {
 }
 
 export const useStashGems = () => {
-	return useSyncState<undefined | GemData>(undefined, ['testPlayerId', 'stashGems']);
+	const [players, setPlayers] = usePlayers();
+	const { session } = useDiscordSdk();
+	const setStashGems = (stashGems: GemData) => {
+		if (session === null) { return; }
+		setPlayers((prev) => {
+			let newPlayers = {...prev};
+			let currentPlayer = newPlayers[session.user.id];
+			if (currentPlayer === undefined) {
+				return prev;
+			}
+			newPlayers[session.user.id] = {...currentPlayer, gems: stashGems};
+			return newPlayers;
+		});
+	}
+	if (session === null || players === undefined || players[session.user.id] === undefined) {
+		return { undefined,  setStashGems}
+	}
+	const stashGems = players[session.user.id].gems;
+	return { stashGems, setStashGems };
 }
 
 export const useStashCards = () => {
-	return useSyncState<undefined | CardStashData>(undefined, ['testPlayerId', 'stashCards']);
+	const [players, setPlayers] = usePlayers();
+	const { session } = useDiscordSdk();
+	const setStashCards = (stashCards: CardStashData) => {
+		if (session === null) { return; }
+		setPlayers((prev) => {
+			let newPlayers = {...prev};
+			let currentPlayer = newPlayers[session.user.id];
+			if (currentPlayer === undefined) {
+				return prev;
+			}
+			newPlayers[session.user.id] = {...currentPlayer, stash: stashCards};
+			return newPlayers;
+		});
+	}
+	if (session === null || players === undefined || players[session.user.id] === undefined) {
+		return { undefined,  setStashCards}
+	}
+	const stashCards = players[session.user.id].stash;
+	return { stashCards, setStashCards };
+}
+
+export const useStashNobles = () => {
+	const [players, setPlayers] = usePlayers();
+	const { session } = useDiscordSdk();
+	const setStashNobles = (stashNobles: NobleData[]) => {
+		if (session === null) { return; }
+		setPlayers((prev) => {
+			let newPlayers = {...prev};
+			let currentPlayer = newPlayers[session.user.id];
+			if (currentPlayer === undefined) {
+				return prev;
+			}
+			newPlayers[session.user.id] = {...currentPlayer, nobles: stashNobles};
+			return newPlayers;
+		});
+	}
+	if (session === null || players === undefined || players[session.user.id] === undefined) {
+		return { undefined, setStashNobles }; 
+	}
+	const stashNobles = players[session.user.id].nobles;
+	return { stashNobles, setStashNobles };
+}
+
+export const useHand = () => {
+	const [players, setPlayers] = usePlayers();
+	const { session } = useDiscordSdk();
+	const setHand = (hand: CardData[]) => {
+		if (session === null) { return; }
+		setPlayers((prev) => {
+			let newPlayers = {...prev};
+			let currentPlayer = newPlayers[session.user.id];
+			if (currentPlayer === undefined) {
+				return prev;
+			}
+			newPlayers[session.user.id] = {...currentPlayer, hand: hand};
+			return newPlayers;
+		});
+	}
+	if (session === null || players === undefined || players[session.user.id] === undefined) {
+		return { undefined, setHand }; 
+	}
+	const hand = players[session.user.id].hand;
+	return { hand, setHand };
 }
 
 export const useMarketGems = () => {
-	return useSyncState<undefined | GemData>(undefined, ['testPlayerId', 'marketGems']);
+	return useSyncState<undefined | GemData>(undefined, ['marketGems']);
 }
 
 export const useMarketCards = () => {
-	return useSyncState<undefined | DeckData>(undefined, ['testPlayerId', 'marketCards']);
+	return useSyncState<undefined | DeckData>(undefined, ['marketCards']);
 }
 
 export const useBuyingPower = (): BuyingPower => {
-	const [stashGems] = useStashGems();
-	const [stashCards] = useStashCards();
+	const {stashGems} = useStashGems();
+	const {stashCards} = useStashCards();
 	if (stashGems === undefined || stashCards === undefined) {
 		return {
 			[Color.WHITE]: 0,
@@ -50,4 +131,8 @@ export const useBuyingPower = (): BuyingPower => {
 			[Color.GREEN]: stashGems[Color.GREEN] + stashCards[Color.GREEN].length,
 		}
 	}
+}
+
+export const useNobles = () => {
+	return useSyncState<undefined | NobleData[]>(undefined, ['nobles']);
 }

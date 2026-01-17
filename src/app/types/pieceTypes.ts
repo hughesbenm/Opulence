@@ -112,3 +112,7 @@ export const emptyGems: GemData = {
 	[Color.GREEN]: 0,
 	[GOLD]: 0
 }
+
+export interface NobleData {
+	
+}

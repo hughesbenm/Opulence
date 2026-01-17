@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
-import { CardData, CardQuality, CardStashData, Color, DeckData, emptyCards, emptyGems, GemData, GOLD } from "../../../types";
+import { CardData, CardQuality, CardStashData, Color, DeckData, emptyCards, emptyGems, GemData, GOLD, NobleData } from "../../../types";
 import Gem from "../../pieces/Gem";
 import StashCard from "../../pieces/StashCard";
 import BoardArea from "../../layout/BoardArea";
@@ -8,7 +8,7 @@ import MarketCard from "../../pieces/MarketCard";
 import Noble from "../../pieces/Noble";
 import { useSyncState } from "@robojs/sync";
 import { useEffect } from "react";
-import { useBuyingPower, useStashGems } from "../../../hooks/sharedData";
+import { useBuyingPower, useHand, useStashCards, useStashGems, useStashNobles } from "../../../hooks/sharedData";
 
 interface StashProps {
 
@@ -16,24 +16,24 @@ interface StashProps {
 
 const Stash: React.FC<StashProps> = ({}) => {
 	const buyingPower = useBuyingPower();
-	const [stashGems, setStashGems] = useStashGems();
-	const [stashCards, setStashCards] = useSyncState<CardStashData>(emptyCards, ["testPlayerId", "stashCards"])
+	const {stashGems, setStashGems} = useStashGems();
+	const {stashCards, setStashCards} = useStashCards();
+	const {stashNobles, setStashNobles} = useStashNobles();
+	const {hand, setHand} = useHand();
 
-	useEffect(() => {
-		if (stashGems === undefined) {
-			setStashGems(emptyGems);
-		}
-	}, [stashGems]);
-
-	useEffect(() => {
-		if (stashGems === undefined) {
-			setStashCards(emptyCards);
-		}
-	}, [stashGems]);
-
-	if (stashGems === undefined || stashCards === undefined) {
+	if (stashGems === undefined || stashCards === undefined || stashNobles === undefined || hand === undefined) {
 		return <p>Loading</p>
 	}
+
+	const currentPoints = Array.from(Object.values(Color)).reduce((pointSum, color) => {
+		stashCards[color].forEach((card) => {
+			if (card.points !== undefined) {
+				pointSum = pointSum + card.points;
+			}
+		})
+		return pointSum;
+	}, 0);
+
 
 	return (
 		<BoardArea name={"Stash"}>
@@ -86,7 +86,7 @@ const Stash: React.FC<StashProps> = ({}) => {
 						alignItems: 'center'
 					}}
 				>
-					<Typography variant={'h4'}>Current points: {5}</Typography>
+					<Typography variant={'h4'}>Current points: {currentPoints}</Typography>
 					<Box
 						sx={{
 							display: 'flex',
@@ -94,20 +94,22 @@ const Stash: React.FC<StashProps> = ({}) => {
 							height: '100%'
 						}}
 					>
-						<MarketCard color={Color.BLUE} />
-						<MarketCard color={Color.BLACK} />
-						<MarketCard color={Color.RED} />
+						{hand.map((handCard) => {
+							return (
+								<MarketCard cardData={handCard}/>
+							)
+						})}
 					</Box>
 					<Box
 						sx={{
 							display: 'flex'
 						}}
 					>
-						<Noble/>
-						<Noble/>
-						<Noble/>
-						<Noble/>
-						<Noble/>
+						{stashNobles.map((noble) => {
+							return (
+								<Noble />
+							)
+						})}
 					</Box>
 				</Stack>
 			</Box>

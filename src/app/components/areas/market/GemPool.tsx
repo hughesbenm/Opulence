@@ -12,14 +12,7 @@ interface GemPoolProps {
 
 const GemPool: React.FC<GemPoolProps> = () => {
 	const [marketGems, setMarketGems] = useMarketGems();
-	const [stashGems, setStashGems] = useStashGems();
-
-	useEffect(() => {
-		if (marketGems === undefined) {
-			setMarketGems(fourPlayerGems);
-		}
-		console.log("gems", marketGems)
-	}, [marketGems]);
+	const {stashGems, setStashGems} = useStashGems();
 
 	if (marketGems === undefined || stashGems === undefined) {
 		return <p>Loading</p>
