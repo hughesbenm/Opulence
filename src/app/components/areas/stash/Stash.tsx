@@ -14,12 +14,12 @@ interface StashProps {
 
 }
 
-const Stash: React.FC<StashProps> = ({}) => {
+const Stash: React.FC<StashProps> = ({ }) => {
 	const buyingPower = useBuyingPower();
-	const {stashGems, setStashGems} = useStashGems();
-	const {stashCards, setStashCards} = useStashCards();
-	const {stashNobles, setStashNobles} = useStashNobles();
-	const {hand, setHand} = useHand();
+	const { stashGems, setStashGems } = useStashGems();
+	const { stashCards, setStashCards } = useStashCards();
+	const { stashNobles, setStashNobles } = useStashNobles();
+	const { hand, setHand } = useHand();
 
 	if (stashGems === undefined || stashCards === undefined || stashNobles === undefined || hand === undefined) {
 		return <p>Loading</p>
@@ -61,7 +61,7 @@ const Stash: React.FC<StashProps> = ({}) => {
 							}}
 						>
 							<BuyingPower amount={buyingPower[color]} color={color} />
-							<StashCard amount={stashCards[color].length} color={color}/>
+							<StashCard amount={stashCards[color].length} color={color} />
 							<Gem
 								color={color}
 								amount={stashGems !== undefined ? stashGems[color] : 0}
@@ -96,7 +96,7 @@ const Stash: React.FC<StashProps> = ({}) => {
 					>
 						{hand.map((handCard) => {
 							return (
-								<MarketCard cardData={handCard}/>
+								<MarketCard cardData={handCard} />
 							)
 						})}
 					</Box>
@@ -107,7 +107,7 @@ const Stash: React.FC<StashProps> = ({}) => {
 					>
 						{stashNobles.map((noble) => {
 							return (
-								<Noble />
+								<Noble nobleData={noble} />
 							)
 						})}
 					</Box>

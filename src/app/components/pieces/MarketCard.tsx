@@ -4,23 +4,27 @@ import CardBase from "./CardBase";
 import Gem from "./Gem";
 
 type MarketCardProps =
-{
-	color: CardQuality | Color;
-	cardData?: never;
-	onClick?: never;
-} | {
-	color?: never;
-	cardData: CardData;
-	onClick?: () => void;
-}
+	{
+		color: CardQuality | Color;
+		cardData?: never;
+		onClick?: never;
+	} | {
+		color?: never;
+		cardData: CardData | undefined;
+		onClick?: () => void;
+	}
 
 const MarketCard: React.FC<MarketCardProps> = ({
 	color,
 	cardData,
 	onClick
-}) => {	
+}) => {
 	if (cardData === undefined && color === undefined) {
 		return <p>Loading</p>
+	}
+
+	if (cardData === undefined) {
+		return <CardBase invisible color={CardQuality.THREE} />
 	}
 
 	return (

@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { CARD_HEIGHT, CARD_WIDTH, CardData, CardQuality, Color, MINI_GEM_FONT_SIZE } from "../../types";
+import { CARD_HEIGHT, CARD_WIDTH, CardQuality, Color, MINI_GEM_FONT_SIZE } from "../../types";
 
 interface CardBaseProps {
 	color: Color | CardQuality;

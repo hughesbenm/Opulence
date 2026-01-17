@@ -70,7 +70,11 @@ const Lobby = () => {
 			});
 		}
 		if (nobles === undefined) { setNobles(shuffle(noblesData).splice(0, getStartingNobleNumber(Object.keys(players).length))); }
-		if (marketGems === undefined) { setMarketGems(getStartingGems(Object.keys(players).length)); }
+		if (marketGems === undefined) {
+			setMarketGems(
+				getStartingGems(Object.keys(lobbyMembers.filter((member) => member.ready)).length)
+			);
+		}
 
 		setGameStarted(true);
 	}
@@ -122,7 +126,10 @@ const Lobby = () => {
 				})}
 				<Button
 					variant={"contained"}
-					disabled={lobbyMembers.filter((lobbyMember) => lobbyMember.ready).length <= 0}
+					disabled={
+						lobbyMembers.filter((lobbyMember) => lobbyMember.ready).length <= 0
+						|| lobbyMembers.filter((lobbyMember) => lobbyMember.ready).length > 4
+					}
 					onClick={startGame}
 				>
 					Start Game

@@ -63,9 +63,9 @@ export const emptyCards: CardStashData = {
 }
 
 export interface DeckData {
-	[CardQuality.ONE]: CardData[];
-	[CardQuality.TWO]: CardData[];
-	[CardQuality.THREE]: CardData[];
+	[CardQuality.ONE]: (CardData | undefined)[];
+	[CardQuality.TWO]: (CardData | undefined)[];
+	[CardQuality.THREE]: (CardData | undefined)[];
 }
 
 export interface GemData {
@@ -114,5 +114,9 @@ export const emptyGems: GemData = {
 }
 
 export interface NobleData {
-	
+	[Color.WHITE]?: number;
+	[Color.BLUE]?: number;
+	[Color.BLACK]?: number;
+	[Color.RED]?: number;
+	[Color.GREEN]?: number;
 }

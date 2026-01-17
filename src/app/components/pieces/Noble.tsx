@@ -1,12 +1,12 @@
 import { Box, Stack } from "@mui/material"
 import OpponentCard from "./OpponentCard";
-import { Color } from "../../types";
+import { Color, NobleData } from "../../types";
 
 interface NobleProps {
-
+	nobleData: NobleData;
 }
 
-const Noble: React.FC<NobleProps> = ({}) => {
+const Noble: React.FC<NobleProps> = ({ nobleData }) => {
 	return (
 		<Stack
 			className='noble'
@@ -33,8 +33,12 @@ const Noble: React.FC<NobleProps> = ({}) => {
 					display: 'flex'
 				}}
 			>
-				<OpponentCard color={Color.WHITE} amount={1}/>
-				<OpponentCard color={Color.GREEN} amount={2}/>
+				{Array.from(Object.values(Color)).map((color) => {
+					if (nobleData[color] === 0 || nobleData[color] === undefined) {
+						return <></>
+					}
+					return <OpponentCard color={color} amount={nobleData[color]} />
+				})}
 			</Box>
 		</Stack>
 	)

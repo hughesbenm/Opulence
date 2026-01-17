@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useDiscordSdk } from '../hooks/useDiscordSdk'
-import { Box, Stack, Typography } from '@mui/material'
+import { Box, IconButton, Stack, Typography } from '@mui/material'
 import ActiveGame from './components/ActiveGame'
 import Lobby from './components/Lobby'
 import { useGameStarted, useLobbyMembers, usePlayers } from './hooks/sharedData'
 import { LobbyMember, Player } from './types/gameTypes'
-import { emptyCards, emptyGems } from './types'
+import { Settings } from '@mui/icons-material'
+import SettingsModal from './components/SettingsModal'
 
 /**
  * This is your Discord Activity's main component. Customize it as you like!
@@ -19,6 +20,7 @@ export const Activity = () => {
 	const [gameStarted, setGameStarted] = useGameStarted();
 	const [lobbyMembers, setLobbyMembers] = useLobbyMembers();
 	const [players, setPlayers] = usePlayers();
+	const [settingsOpen, setSettingsOpen] = useState<boolean>(false);
 
 	useEffect(() => {
 		// Requesting the channel in GDMs (when the guild ID is null) requires
@@ -35,7 +37,7 @@ export const Activity = () => {
 			}
 		})
 		// console.log(session?.user.id)
-		
+
 	}, [authenticated, discordSdk])
 
 	useEffect(() => {
@@ -45,7 +47,7 @@ export const Activity = () => {
 		if (lobbyMembers === undefined || !lobbyMembers.some((lobbyMember) => lobbyMember.id === session.user.id)) {
 			const currentLobbyMembers: LobbyMember[] = lobbyMembers === undefined ? [] : lobbyMembers;
 			const newLobbyMember: LobbyMember = {
-				id: session!.user.id, 
+				id: session!.user.id,
 				name: session!.user.global_name!,
 				icon: session!.user.avatar ?? "",
 				ready: false
@@ -60,9 +62,9 @@ export const Activity = () => {
 	}, [session])
 
 	useEffect(() => {
-		console.log("New Players:" , players)
+		console.log("New Players:", players)
 	}, [players])
-	
+
 	return (
 		<Stack
 			display={'flex'}
@@ -74,12 +76,15 @@ export const Activity = () => {
 		>
 			<Box
 				display="flex"
-				justifyContent={'flex-start'}
+				justifyContent={'space-between'}
 			>
 				<img
 					src="/OpulenceLogo.png"
 					width={175}
 				/>
+				<IconButton onClick={() => setSettingsOpen(true)}>
+					<Settings fontSize='large' />
+				</IconButton>
 			</Box>
 			<Box
 				sx={{
@@ -96,6 +101,7 @@ export const Activity = () => {
 					: <Lobby />
 				}
 			</Box>
+			{settingsOpen && <SettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} />}
 		</Stack>
 	)
 }
